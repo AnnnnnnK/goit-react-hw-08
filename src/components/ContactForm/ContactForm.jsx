@@ -38,33 +38,40 @@ const ContactForm = () => {
   };
 
   return (
-    <>
-      <h1 className={css.title}>Phonebook</h1>
+    <div className={css.container}>
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
-        <Form className={css.form}>
-          <label className={css.label}>Name: </label>
-          <Field
-            className={css.input}
-            type="text"
-            name="name"
-            required
-            pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          />
+        <Form className={css.formContainer}>
+          <h1 className={css.title}>Phonebook</h1>
 
-          <label className={css.label}>Number: </label>
-          <Field
-            className={css.input}
-            type="tel"
-            name="number"
-            required
-            pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
-          />
+          <div className={css.fieldContainer}>
+            <label className={css.label}>Name: </label>
+            <Field
+              className={css.input}
+              placeholder="Enter contact name"
+              type="text"
+              name="name"
+              required
+              pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            />
+          </div>
+
+          <div className={css.fieldContainer}>
+            <label className={css.label}>Number: </label>
+            <Field
+              placeholder="Enter contact number"
+              className={css.input}
+              type="tel"
+              name="number"
+              required
+              pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
+            />
+          </div>
           <button className={css.btn} type="submit">
             Add contact
           </button>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 };
 

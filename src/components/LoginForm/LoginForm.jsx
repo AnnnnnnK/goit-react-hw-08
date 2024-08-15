@@ -1,72 +1,70 @@
-import { Field, Form, Formik, useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
-import { Button, Card, CardContent, Container, TextField } from "@mui/material";
+// import { Form } from "react-router-dom";
 import css from "./LoginForm.module.css";
 import { NavLink } from "react-router-dom";
-// import { Form } from "react-router-dom";
 
 const LoginForm = () => {
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
   const dispatch = useDispatch();
-
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    //  validationSchema: validationSchema,
-    onSubmit: (values, options) => {
-      console.log(values);
-      dispatch(login(values));
-      options.resetForm();
-    },
-  });
+  const handleSubmit = (values, options) => {
+    console.log(values);
+    dispatch(login(values));
+    options.resetForm();
+  };
   return (
-    <Container maxWidth="sm">
-      <Card variant="outlined">
-        <CardContent>
-          <form onSubmit={formik.handleSubmit}>
-            <h2>Log in to your account</h2>
-            <div>
-              <TextField
-                fullWidth
-                size="small"
-                name="email"
-                label="Email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                sx={{ mb: 2 }}
-              />
-              <TextField
-                fullWidth
-                // id="password"
-                size="small"
-                name="password"
-                label="Password"
-                type="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                sx={{ mb: 2 }}
-              />
-            </div>
-            <Button
-              // sx={{ ml: 56 }}
-              color="secondary"
-              variant="contained"
-              size="small"
-              type="submit"
-            >
-              Log In
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </Container>
-
-    // </div>
+    <div className={css.container}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        // className={css.container}
+      >
+        <Form className={css.formContainer}>
+          {/* <div className={css.fieldContainer}> */}
+          <h2>Log in to your account</h2>
+          {/* <label className={css.label}>Name:</label> */}
+          <div className={css.fieldContainer}>
+            <label className={css.label}>Name:</label>
+            <Field
+              name="email"
+              type="text"
+              placeholder="Enter your email"
+              className={css.input}
+            />
+          </div>
+          {/* <label className={css.label}>Name:
+              
+            </label> */}
+          <div className={css.fieldContainer}>
+            <label className={css.label}>Password:</label>
+            <Field
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              className={css.input}
+            />
+          </div>
+          <button type="submit" className={css.btn}>
+            Login
+          </button>
+          <div className={css.textContainer}>
+            <NavLink to="/register" className={css.link}>
+              Register
+            </NavLink>
+            <p className={css.text}> if you don't have an account</p>
+          </div>
+        </Form>
+      </Formik>
+    </div>
   );
 };
+
+export default LoginForm;
 
 // const LoginForm = () => {
 //   const initialValues = {
@@ -95,4 +93,4 @@ const LoginForm = () => {
 //   );
 // };
 
-export default LoginForm;
+// export default LoginForm;
