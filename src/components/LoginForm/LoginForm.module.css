@@ -2,15 +2,7 @@
   border-radius: 50%;
   border: 1px solid black;
 }
-.formContainer {
-  /* display: flex;
-  flex-direction: column;
-  padding: 20px; */
-}
-.inputsContainer {
-  display: flex;
-  gap: 5px;
-}
+
 .btn {
   display: flex;
   margin-left: 150px;

@@ -25,9 +25,9 @@ const LoginForm = () => {
     <Container maxWidth="sm">
       <Card variant="outlined">
         <CardContent>
-          <form onSubmit={formik.handleSubmit} className={css.formContainer}>
+          <form onSubmit={formik.handleSubmit}>
             <h2>Log in to your account</h2>
-            <div className={css.inputsContainer}>
+            <div>
               <TextField
                 fullWidth
                 size="small"
@@ -51,7 +51,7 @@ const LoginForm = () => {
               />
             </div>
             <Button
-              sx={{ ml: 56 }}
+              // sx={{ ml: 56 }}
               color="secondary"
               variant="contained"
               size="small"

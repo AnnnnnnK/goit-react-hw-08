@@ -33,7 +33,8 @@ const RegistrationForm = () => {
               value={formik.values.name}
               onChange={formik.handleChange}
               size="small"
-              margin="normal"
+              sx={{ mb: 2 }}
+              // margin="normal"
             />
             <TextField
               fullWidth
@@ -43,7 +44,8 @@ const RegistrationForm = () => {
               value={formik.values.email}
               onChange={formik.handleChange}
               size="small"
-              margin="normal"
+              sx={{ mb: 2 }}
+              // margin="normal"
               // onBlur={formik.handleBlur}
               // error={formik.touched.email && Boolean(formik.errors.email)}
               // helperText={formik.touched.email && formik.errors.email}
@@ -57,7 +59,8 @@ const RegistrationForm = () => {
               value={formik.values.password}
               onChange={formik.handleChange}
               size="small"
-              margin="normal"
+              sx={{ mb: 2 }}
+              // margin="normal"
             />
             <Button color="secondary" variant="contained" type="submit">
               Register

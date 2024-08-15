@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  gap: 20px;
+}
+.link {
+  color: #330033;
+  font-size: 30px;
+  text-decoration: none;
+}
+.active {
+  color: #990099;
+  /* font-size: 31px; */
+}
+.link:hover {
+  color: #990099;
+  /* font-size: 31px; */
+  transition: color 0.5s;
+}
