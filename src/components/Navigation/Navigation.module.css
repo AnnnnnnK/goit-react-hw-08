@@ -6,6 +6,7 @@
   color: #330033;
   font-size: 30px;
   text-decoration: none;
+  align-self: center;
 }
 .active {
   color: #990099;

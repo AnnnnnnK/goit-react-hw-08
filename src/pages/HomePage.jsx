@@ -1,13 +1,9 @@
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../redux/auth/selectors";
+import WelcomeMessage from "../components/WelcomeMessage/WelcomeMessage";
 
 const HomePage = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  return (
-    <div>
-      <h2>Welcome to a phonebook app</h2>
-    </div>
-  );
+  return <WelcomeMessage />;
 };
 
 export default HomePage;
