@@ -8,8 +8,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectContacts } from "../../redux/contacts/selectors";
 import { addContact } from "../../redux/contacts/operations";
 // import { selectContacts } from "../../redux/contactsSlice";
+import * as Yup from "yup";
+import toast from "react-hot-toast";
 
 const ContactForm = () => {
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .matches(
+        /^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+        "Name is not valid. Only letters, apostrophes, and dashes are allowed."
+      )
+      .required("Name is required"),
+    number: Yup.string()
+      .matches(
+        /^\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}$/,
+        "Number is not valid. Please follow the international phone number format."
+      )
+      .required("Number is required"),
+  });
   const contacts = useSelector(selectContacts);
 
   const dispatch = useDispatch();
@@ -29,7 +45,7 @@ const ContactForm = () => {
     );
 
     if (nameIsAdded) {
-      alert("Name is already added.");
+      toast.error("Name is already added.");
       return;
     }
 
@@ -39,7 +55,11 @@ const ContactForm = () => {
 
   return (
     <div className={css.container}>
-      <Formik onSubmit={handleSubmit} initialValues={initialValues}>
+      <Formik
+        onSubmit={handleSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+      >
         <Form className={css.formContainer}>
           <h1 className={css.title}>Phonebook</h1>
 

@@ -1,11 +1,16 @@
 import { Field, Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth/operations";
 // import { Form } from "react-router-dom";
 import css from "./LoginForm.module.css";
 import { NavLink } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { selectUser } from "../../redux/auth/selectors";
 
 const LoginForm = () => {
+  const user = useSelector(selectUser);
+  // console.log(userName);
+
   const initialValues = {
     email: "",
     password: "",
@@ -13,8 +18,9 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = (values, options) => {
-    console.log(values);
+    // console.log(values);
     dispatch(login(values));
+    toast.success(`You're now logged in. Enjoy your time!`);
     options.resetForm();
   };
   return (
@@ -60,6 +66,7 @@ const LoginForm = () => {
           </div>
         </Form>
       </Formik>
+      {/* <Toaster /> */}
     </div>
   );
 };

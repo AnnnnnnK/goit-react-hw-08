@@ -1,6 +1,8 @@
 .header {
-  background-color: #f2ccff;
-  padding: 20px;
   display: flex;
   margin-bottom: 30px;
+  padding: 10px 20px;
+  align-items: center;
+  background-color: #f2ccff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

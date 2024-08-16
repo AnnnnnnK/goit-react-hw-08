@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import css from "./RegistrationForm.module.css";
 import { NavLink } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const RegistrationForm = () => {
   const initialValues = {
@@ -16,6 +17,7 @@ const RegistrationForm = () => {
     console.log(values);
     dispatch(register(values));
     options.resetForm();
+    toast.success(`Congratulations! You're now registered. Let's get started!`);
   };
   return (
     <div className={css.container}>
