@@ -24,9 +24,7 @@ const slice = createSlice({
       .addCase(register.rejected, (state) => {
         state.isLoggedIn = false;
       })
-      .addCase(register.rejected, (state) => {
-        state.isLoggedIn = false;
-      })
+
       .addCase(login.pending, (state) => {
         state.isLoggedIn = false;
       })

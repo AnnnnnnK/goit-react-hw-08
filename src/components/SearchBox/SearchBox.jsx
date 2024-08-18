@@ -12,14 +12,16 @@ const Filter = () => {
   return (
     <>
       {contacts.length > 0 && (
-        <input
-          className={css.input}
-          type="search"
-          onChange={(e) => {
-            dispatch(changeFilter(e.target.value));
-          }}
-          placeholder="Find name"
-        />
+        <div className={css.container}>
+          <input
+            className={css.input}
+            type="search"
+            onChange={(e) => {
+              dispatch(changeFilter(e.target.value));
+            }}
+            placeholder="Find name"
+          />
+        </div>
       )}
     </>
   );

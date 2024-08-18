@@ -14,7 +14,7 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
   password: Yup.number()
     .typeError("Password must be a number")
-    .min(5, "Too Short!")
+    .min(8, "Too Short!")
     .required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
 });
